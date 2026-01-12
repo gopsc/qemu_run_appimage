@@ -19,7 +19,7 @@ cd "$TEMP_DIR"
 
 # 提取AppImage
 echo "提取AppImage..."
-qemu-x86_64-static "$APPIMAGE" --appimage-extract 2>/dev/null || {
+qemu-x86_64 "$APPIMAGE" --appimage-extract 2>/dev/null || {
     echo "提取失败" >&2
     exit 1
 }
@@ -92,5 +92,5 @@ else
     fi
     
     # 直接使用QEMU运行
-    exec qemu-x86_64-static -L "$HERE" "$EXECUTABLE" "$@"
+    exec qemu-x86_64 -L "$HERE" "$EXECUTABLE" "$@"
 fi
